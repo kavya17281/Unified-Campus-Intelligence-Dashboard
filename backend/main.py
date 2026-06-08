@@ -1,0 +1,113 @@
+from fastapi import FastAPI
+
+from library_service import (
+    search_books,
+    get_books_by_tag,
+    get_books_by_author,
+    get_books_by_category,
+    get_latest_books,
+    get_popular_books,
+    get_book_by_title,
+    get_availability,
+    get_shelf_location,
+    get_author,
+    get_category,
+    get_summary,
+    get_tags,
+    get_library_stats
+)
+
+app = FastAPI()
+
+
+@app.get("/")
+def home():
+    return {
+        "message": "Library MCP Running"
+    }
+
+
+# -----------------------------
+# Discovery Endpoints
+# -----------------------------
+
+@app.get("/search")
+def search(query: str):
+    return search_books(query)
+
+
+@app.get("/tag-books")
+def tag_books(tag: str):
+    return get_books_by_tag(tag)
+
+
+@app.get("/author-books")
+def author_books(author: str):
+    return get_books_by_author(author)
+
+
+@app.get("/category-books")
+def category_books(category: str):
+    return get_books_by_category(category)
+
+
+@app.get("/latest")
+def latest():
+    return get_latest_books()
+
+
+@app.get("/popular")
+def popular():
+    return get_popular_books()
+
+
+# -----------------------------
+# Detail Endpoints
+# -----------------------------
+
+@app.get("/book")
+def book(title: str):
+    return get_book_by_title(title)
+
+
+@app.get("/availability")
+def availability(title: str):
+    return get_availability(title)
+
+
+@app.get("/shelf")
+def shelf(title: str):
+    return get_shelf_location(title)
+
+
+@app.get("/author")
+def author(title: str):
+    return get_author(title)
+
+
+@app.get("/category")
+def category(title: str):
+    return get_category(title)
+
+
+@app.get("/summary")
+def summary(title: str):
+    return get_summary(title)
+
+
+@app.get("/tags")
+def tags(title: str):
+    return get_tags(title)
+
+
+# -----------------------------
+# Statistics
+# -----------------------------
+
+@app.get("/stats")
+def stats():
+    return get_library_stats()
+
+# start code
+# cd backend
+# uvicorn main:app --reload

@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "title": "Data Structures and Algorithms",
+        "author": "CLRS",
+        "category": "Computer Science",
+        "summary": "A foundational textbook covering algorithms, data structures, complexity analysis, and problem-solving techniques used in modern software development.",
+        "available": true,
+        "copies": 5,
+        "shelf": "B12",
+        "popularity": 92,
+        "added_on": "2026-01-15",
+        "tags": ["algorithms", "data structures", "programming"]
+    },
+    {
+        "id": 2,
+        "title": "Machine Learning",
+        "author": "Tom Mitchell",
+        "category": "Artificial Intelligence",
+        "summary": "A classic introduction to machine learning concepts including supervised learning, decision trees, neural networks, and statistical learning methods.",
+        "available": true,
+        "copies": 3,
+        "shelf": "A07",
+        "popularity": 95,
+        "added_on": "2026-03-10",
+        "tags": ["machine learning", "ai", "data science"]
+    },
+    {
+        "id": 3,
+        "title": "Deep Learning",
+        "author": "Ian Goodfellow",
+        "category": "Artificial Intelligence",
+        "summary": "A comprehensive guide to deep neural networks, representation learning, optimization techniques, and modern deep learning architectures.",
+        "available": false,
+        "copies": 0,
+        "shelf": "A08",
+        "popularity": 98,
+        "added_on": "2026-04-22",
+        "tags": ["deep learning", "neural networks", "ai"]
+    },
+    {
+        "id": 4,
+        "title": "Operating Systems",
+        "author": "Galvin",
+        "category": "Computer Science",
+        "summary": "Explains operating system concepts including processes, memory management, scheduling, file systems, and concurrency.",
+        "available": true,
+        "copies": 2,
+        "shelf": "C04",
+        "popularity": 85,
+        "added_on": "2025-12-05",
+        "tags": ["os", "systems", "computer science"]
+    },
+    {
+        "id": 5,
+        "title": "Computer Networks",
+        "author": "Kurose",
+        "category": "Computer Science",
+        "summary": "Introduces networking principles, internet protocols, network architecture, routing, congestion control, and distributed communication systems.",
+        "available": true,
+        "copies": 4,
+        "shelf": "C10",
+        "popularity": 88,
+        "added_on": "2026-02-18",
+        "tags": ["networking", "internet", "communication"]
+    },
+    {
+        "id": 6,
+        "title": "Artificial Intelligence: A Modern Approach",
+        "author": "Russell and Norvig",
+        "category": "Artificial Intelligence",
+        "summary": "A widely used AI textbook covering search, reasoning, planning, machine learning, knowledge representation, and intelligent agents.",
+        "available": true,
+        "copies": 2,
+        "shelf": "A01",
+        "popularity": 97,
+        "added_on": "2026-05-01",
+        "tags": ["ai", "intelligent systems", "reasoning"]
+    }
+]
