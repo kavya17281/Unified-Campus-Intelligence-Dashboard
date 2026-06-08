@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Campus Intelligence Dashboard</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const books = [
+            {
+                id: 1,
+                title: "Data Structures and Algorithms",
+                available: true,
+                shelf: "B12"
+            },
+            {
+                id: 2,
+                title: "Machine Learning",
+                available: false,
+                shelf: "C5"
+            }
+        ];
+
+        function searchBook(query) {
+
+            return books.find(book =>
+                book.title.toLowerCase().includes(query.toLowerCase())
+            );
+        }
+
+
+        const message_data = [
+            {message:"hello", sender:"user", time:"2200", id:crypto.randomUUID()},
+            {message:"hi! how can i help you", sender:"robot", time:"2201", id:crypto.randomUUID()}
+        ]
+
+        function InputBox({input, setInput, messages, setMessages}) {
+
+            function handleSend() {
+                if (input.trim() === "") return;
+
+                const userMessage = {
+                    message: input,
+                    sender: "user",
+                    time: new Date().toLocaleTimeString(),
+                    id: crypto.randomUUID()
+                };
+
+                const words = input.trim().split(" ");
+                const command = words[0].toLowerCase();
+                const query = words.slice(1).join(" ");
+
+                let botReply;
+
+                if (command === "book") {
+                    const result = searchBook(query);
+
+                    if (result) {
+                        botReply = {
+                            message: `${result.title} is ${
+                                result.available ? "available" : "not available"
+                            }`,
+                            sender: "robot",
+                            time: new Date().toLocaleTimeString(),
+                            id: crypto.randomUUID()
+                        };
+                    }
+                    else {
+                        botReply = {
+                            message: "Book not found",
+                            sender: "robot",
+                            time: new Date().toLocaleTimeString(),
+                            id: crypto.randomUUID()
+                        };
+                    }
+                }
+                else {
+                    botReply = {
+                        message: "Unknown command",
+                        sender: "robot",
+                        time: new Date().toLocaleTimeString(),
+                        id: crypto.randomUUID()
+                    };
+                }
+
+                setMessages(prev => [...prev, userMessage, botReply]);
+                setInput("");
+            }
+
+            return (
+                <>
+                    <input
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="type your message"
+                    />
+
+                    <button onClick={handleSend}>
+                        Send
+                    </button>
+               </>
+            )
+        }
+
+        function MessageBox({message}) {
+
+            return (
+                <div>
+                    <b>{message.sender}</b>
+                    <small>{message.time}</small>
+                    <p>{message.message}</p>
+                </div>
+            );
+        }
+
+        function App() {
+            const [messages, setMessages] = React.useState(message_data);
+            const [input, setInput] = React.useState("");
+
+            return (
+                <>
+                    <InputBox
+                        input={input}
+                        setInput={setInput}
+                        messages={messages}
+                        setMessages={setMessages}
+                    />
+
+                    {messages.map(msg => <MessageBox key={msg.id} message={msg}/>)}
+                </>
+            );
+        }
+
+        // Render the App component into the root div
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+
+    </script>
+
+</body>
+</html>
