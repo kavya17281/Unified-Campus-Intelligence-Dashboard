@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from library_service import (
+from mcp.library_service import (
     search_books,
     get_books_by_tag,
     get_books_by_author,
@@ -18,6 +18,30 @@ from library_service import (
 )
 
 app = FastAPI()
+
+# start code
+# cd backend
+# uvicorn main:app --reload
+
+# ----------------------------
+
+from pydantic import BaseModel
+from gemini_service import chat_with_gemini
+
+
+class ChatRequest(BaseModel):
+    message: str
+
+
+@app.post("/chat")
+def chat(request: ChatRequest):
+    response = chat_with_gemini(request.message)
+
+    return {
+        "response": response
+    }
+
+# ----------------------------
 
 
 @app.get("/")
@@ -108,6 +132,3 @@ def tags(title: str):
 def stats():
     return get_library_stats()
 
-# start code
-# cd backend
-# uvicorn main:app --reload

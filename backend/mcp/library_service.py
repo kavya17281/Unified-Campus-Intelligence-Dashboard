@@ -1,6 +1,7 @@
+from pathlib import Path
 import json
 
-FILE_NAME = "books.json"
+FILE_NAME = Path(__file__).parent / "books.json"
 
 
 def load_books():
