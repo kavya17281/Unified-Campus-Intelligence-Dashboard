@@ -1,0 +1,15 @@
+[
+  { "subject": "Signals", "type": "MTE", "date": "2026-09-10", "start_time": "10:00" },
+  { "subject": "ESS", "type": "MTE", "date": "2026-09-11", "start_time": "10:00" },
+  { "subject": "Digital Logics", "type": "MTE", "date": "2026-09-12", "start_time": "10:00" },
+  { "subject": "Semiconductor", "type": "MTE", "date": "2026-09-14", "start_time": "10:00" },
+  { "subject": "Maths", "type": "MTE", "date": "2026-09-15", "start_time": "10:00" },
+  { "subject": "IKS", "type": "MTE", "date": "2026-09-16", "start_time": "10:00" },
+
+  { "subject": "Semiconductor", "type": "ETE", "date": "2026-11-13", "start_time": "10:00" },
+  { "subject": "IKS", "type": "ETE", "date": "2026-11-16", "start_time": "10:00" },
+  { "subject": "Maths", "type": "ETE", "date": "2026-11-18", "start_time": "10:00" },
+  { "subject": "Signals", "type": "ETE", "date": "2026-11-20", "start_time": "10:00" },
+  { "subject": "Digital Logics", "type": "ETE", "date": "2026-11-23", "start_time": "10:00" },
+  { "subject": "ESS", "type": "ETE", "date": "2026-11-24", "start_time": "10:00" }
+]

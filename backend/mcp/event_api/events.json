@@ -1,0 +1,423 @@
+[
+    {
+        "id": 1,
+        "title": "Introduction to MCP Servers",
+        "description": "Hands-on workshop on building MCP servers with FastAPI and Gemini integration.",
+        "category": "Workshop",
+        "club": "MARS",
+        "venue": "APJ-104",
+        "date": "2026-07-10",
+        "start_time": "14:00",
+        "end_time": "17:00",
+        "is_cancelled": false,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/mars-mcp",
+        "refreshments": "Tea and Snacks",
+        "featured": true,
+        "tags": [
+            "mcp",
+            "fastapi",
+            "backend",
+            "ai"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Autonomous Robotics Bootcamp",
+        "description": "Introduction to autonomous navigation and robot control systems.",
+        "category": "Workshop",
+        "club": "MARS",
+        "venue": "GB-202",
+        "date": "2026-07-18",
+        "start_time": "15:00",
+        "end_time": "18:00",
+        "is_cancelled": false,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/mars-robotics",
+        "refreshments": "Cold Drinks and Snacks",
+        "featured": true,
+        "tags": [
+            "robotics",
+            "autonomous",
+            "control"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Mars Open Projects Orientation",
+        "description": "Overview of projects, expectations and team formation.",
+        "category": "Seminar",
+        "club": "MARS",
+        "venue": "APJ-507",
+        "date": "2026-07-25",
+        "start_time": "17:00",
+        "end_time": "19:00",
+        "is_cancelled": false,
+        "registration_required": false,
+        "registration_link": "",
+        "refreshments": "Tea and Biscuits",
+        "featured": false,
+        "tags": [
+            "orientation",
+            "projects",
+            "mars"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Robocon Recruitment Drive",
+        "description": "Introduction to the Robocon team and recruitment process.",
+        "category": "Recruitment",
+        "club": "Robocon",
+        "venue": "GB-104",
+        "date": "2026-07-14",
+        "start_time": "18:00",
+        "end_time": "20:00",
+        "is_cancelled": false,
+        "registration_required": false,
+        "registration_link": "",
+        "refreshments": "None",
+        "featured": true,
+        "tags": [
+            "robotics",
+            "recruitment",
+            "robocon"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Robot Design Fundamentals",
+        "description": "Workshop covering CAD design and mechanical systems.",
+        "category": "Workshop",
+        "club": "Robocon",
+        "venue": "GB-105",
+        "date": "2026-08-02",
+        "start_time": "14:00",
+        "end_time": "17:00",
+        "is_cancelled": false,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/robocon-design",
+        "refreshments": "Juice and Snacks",
+        "featured": false,
+        "tags": [
+            "cad",
+            "robotics",
+            "design"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Competitive Programming Bootcamp",
+        "description": "Advanced graphs, DP and contest techniques.",
+        "category": "Workshop",
+        "club": "PAG",
+        "venue": "APJ-103",
+        "date": "2026-07-20",
+        "start_time": "15:00",
+        "end_time": "18:00",
+        "is_cancelled": false,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/pag-cp",
+        "refreshments": "Pizza and Soft Drinks",
+        "featured": true,
+        "tags": [
+            "cp",
+            "algorithms",
+            "coding"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Codeforces Contest Discussion",
+        "description": "Editorial session and problem solving discussion.",
+        "category": "Seminar",
+        "club": "PAG",
+        "venue": "GB-204",
+        "date": "2026-07-29",
+        "start_time": "18:00",
+        "end_time": "20:00",
+        "is_cancelled": false,
+        "registration_required": false,
+        "registration_link": "",
+        "refreshments": "Tea and Snacks",
+        "featured": false,
+        "tags": [
+            "cp",
+            "codeforces",
+            "discussion"
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Build Your First LLM App",
+        "description": "Practical introduction to LLM APIs and agents.",
+        "category": "Workshop",
+        "club": "AIRES",
+        "venue": "APJ-407",
+        "date": "2026-07-22",
+        "start_time": "16:00",
+        "end_time": "19:00",
+        "is_cancelled": false,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/aires-llm",
+        "refreshments": "Coffee and Cookies",
+        "featured": true,
+        "tags": [
+            "llm",
+            "ai",
+            "agents"
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Computer Vision Essentials",
+        "description": "Introduction to image classification and object detection.",
+        "category": "Workshop",
+        "club": "AIRES",
+        "venue": "GB-202",
+        "date": "2026-08-06",
+        "start_time": "15:00",
+        "end_time": "18:00",
+        "is_cancelled": false,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/aires-cv",
+        "refreshments": "Tea and Sandwiches",
+        "featured": false,
+        "tags": [
+            "computer vision",
+            "ml",
+            "ai"
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Campus Hackathon Kickoff",
+        "description": "Hackathon briefing and team formation.",
+        "category": "Hackathon",
+        "club": "SDSLabs",
+        "venue": "APJ-507",
+        "date": "2026-08-01",
+        "start_time": "10:00",
+        "end_time": "13:00",
+        "is_cancelled": false,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/hackathon",
+        "refreshments": "Lunch and Beverages",
+        "featured": true,
+        "tags": [
+            "hackathon",
+            "development",
+            "team formation"
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Open Source Contribution Day",
+        "description": "Learn how to contribute to open source projects.",
+        "category": "Workshop",
+        "club": "SDSLabs",
+        "venue": "GB-104",
+        "date": "2026-08-08",
+        "start_time": "14:00",
+        "end_time": "17:00",
+        "is_cancelled": false,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/oss",
+        "refreshments": "Tea and Snacks",
+        "featured": false,
+        "tags": [
+            "opensource",
+            "github",
+            "development"
+        ]
+    },
+    {
+        "id": 12,
+        "title": "Startup Ideation Workshop",
+        "description": "Learn validation, pitching and startup fundamentals.",
+        "category": "Workshop",
+        "club": "E-Cell",
+        "venue": "GB-105",
+        "date": "2026-08-05",
+        "start_time": "15:00",
+        "end_time": "18:00",
+        "is_cancelled": false,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/ecell",
+        "refreshments": "Tea and Sandwiches",
+        "featured": false,
+        "tags": [
+            "startup",
+            "entrepreneurship",
+            "innovation"
+        ]
+    },
+    {
+        "id": 13,
+        "title": "Founder Interaction Session",
+        "description": "Discussion with startup founders from IIT Roorkee alumni network.",
+        "category": "Seminar",
+        "club": "E-Cell",
+        "venue": "GB-204",
+        "date": "2026-08-12",
+        "start_time": "18:00",
+        "end_time": "20:00",
+        "is_cancelled": false,
+        "registration_required": false,
+        "registration_link": "",
+        "refreshments": "Tea and Snacks",
+        "featured": false,
+        "tags": [
+            "startup",
+            "founders",
+            "entrepreneurship"
+        ]
+    },
+    {
+        "id": 14,
+        "title": "Open Mic Night",
+        "description": "Poetry, music and stand-up performances.",
+        "category": "Open Mic",
+        "club": "Music Club",
+        "venue": "MAC Auditorium",
+        "date": "2026-07-28",
+        "start_time": "19:00",
+        "end_time": "22:00",
+        "is_cancelled": false,
+        "registration_required": false,
+        "registration_link": "",
+        "refreshments": "Cold Drinks and Snacks",
+        "featured": true,
+        "tags": [
+            "music",
+            "poetry",
+            "open mic"
+        ]
+    },
+    {
+        "id": 15,
+        "title": "Acoustic Evening",
+        "description": "Live performances by campus musicians.",
+        "category": "Cultural",
+        "club": "Music Club",
+        "venue": "MAC Auditorium",
+        "date": "2026-08-10",
+        "start_time": "18:00",
+        "end_time": "21:00",
+        "is_cancelled": false,
+        "registration_required": false,
+        "registration_link": "",
+        "refreshments": "Tea and Snacks",
+        "featured": false,
+        "tags": [
+            "music",
+            "performance",
+            "acoustic"
+        ]
+    },
+    {
+        "id": 16,
+        "title": "Street Play Against Cyber Fraud",
+        "description": "Awareness campaign through drama and theatre performances.",
+        "category": "Cultural",
+        "club": "Dramatics Club",
+        "venue": "Convocation Hall",
+        "date": "2026-07-30",
+        "start_time": "18:00",
+        "end_time": "20:00",
+        "is_cancelled": false,
+        "registration_required": false,
+        "registration_link": "",
+        "refreshments": "Tea and Samosa",
+        "featured": false,
+        "tags": [
+            "drama",
+            "theatre",
+            "awareness"
+        ]
+    },
+    {
+        "id": 17,
+        "title": "Improvisation Workshop",
+        "description": "Interactive theatre and improvisation exercises for beginners.",
+        "category": "Workshop",
+        "club": "Dramatics Club",
+        "venue": "MAC Auditorium",
+        "date": "2026-08-14",
+        "start_time": "17:00",
+        "end_time": "19:00",
+        "is_cancelled": false,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/improv",
+        "refreshments": "Tea and Snacks",
+        "featured": false,
+        "tags": [
+            "theatre",
+            "acting",
+            "improv"
+        ]
+    },
+    {
+        "id": 18,
+        "title": "Freshers Dance Showcase",
+        "description": "Performance and auditions for new members of Choreo.",
+        "category": "Recruitment",
+        "club": "Choreo",
+        "venue": "MAC Auditorium",
+        "date": "2026-08-07",
+        "start_time": "18:00",
+        "end_time": "21:00",
+        "is_cancelled": false,
+        "registration_required": false,
+        "registration_link": "",
+        "refreshments": "Cold Drinks",
+        "featured": true,
+        "tags": [
+            "dance",
+            "auditions",
+            "recruitment"
+        ]
+    },
+    {
+        "id": 19,
+        "title": "Campus Cleanliness Drive",
+        "description": "Volunteer activity focused on improving campus cleanliness.",
+        "category": "Cultural",
+        "club": "NSS",
+        "venue": "Open Air Theatre",
+        "date": "2026-06-15",
+        "start_time": "08:00",
+        "end_time": "11:00",
+        "is_cancelled": false,
+        "registration_required": false,
+        "registration_link": "",
+        "refreshments": "Breakfast Packets",
+        "featured": false,
+        "tags": [
+            "social",
+            "volunteer",
+            "nss"
+        ]
+    },
+    {
+        "id": 20,
+        "title": "24 Hour Campus Hackathon",
+        "description": "Teams build software solutions to real-world campus problems.",
+        "category": "Hackathon",
+        "club": "SDSLabs",
+        "venue": "APJ-507",
+        "date": "2026-08-21",
+        "start_time": "10:00",
+        "end_time": "10:00",
+        "is_cancelled": true,
+        "registration_required": true,
+        "registration_link": "https://forms.example.com/campushack",
+        "refreshments": "Meals Throughout Event",
+        "featured": true,
+        "tags": [
+            "hackathon",
+            "software",
+            "development"
+        ]
+    }
+]

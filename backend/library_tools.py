@@ -1,4 +1,4 @@
-from mcp.library_service import (
+from backend.mcp.library_api.library_service import (
     get_availability,
     get_author,
     get_summary

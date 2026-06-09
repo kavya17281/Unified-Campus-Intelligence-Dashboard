@@ -1,6 +1,6 @@
 from openai import OpenAI
 from dotenv import load_dotenv
-from mcp.library_service import *
+from mcp.library_api.library_service import *
 
 import os
 import json

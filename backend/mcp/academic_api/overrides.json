@@ -1,0 +1,40 @@
+[
+  {
+    "type": "rescheduled",
+    "subject": "Signals",
+    "original_day": "monday",
+    "original_time": "16:05-17:00",
+    "new_day": "tuesday",
+    "new_time": "08:00-08:55",
+    "room": "APJ-004"
+  },
+  {
+    "type": "cancelled",
+    "subject": "ESS",
+    "day": "friday",
+    "time": "08:00-08:55"
+  },
+  {
+    "type": "extra_class",
+    "subject": "Maths",
+    "day": "saturday",
+    "time": "10:00-11:00",
+    "room": "APJ-503"
+  },
+  {
+    "type": "rescheduled",
+    "subject": "Digital Logics",
+    "original_day": "tuesday",
+    "original_time": "09:00-09:55",
+    "new_day": "thursday",
+    "new_time": "09:00-09:55",
+    "room": "APJ-004"
+  },
+  {
+    "type": "extra_class",
+    "subject": "Semiconductor",
+    "day": "wednesday",
+    "time": "16:00-17:00",
+    "room": "APJ-004"
+  }
+]
