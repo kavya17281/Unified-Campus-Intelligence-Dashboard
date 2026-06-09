@@ -16,7 +16,7 @@ def basic_book_info(book):
     }
 
 
-def find_book(title):
+def find_book(title:str):
     books = load_books()
 
     for book in books:
@@ -30,7 +30,7 @@ def find_book(title):
 # Discovery Functions
 # -----------------------------
 
-def search_books(query):
+def search_books(query:str):
     books = load_books()
     matches = []
     query = query.lower()
@@ -45,7 +45,7 @@ def search_books(query):
     return matches
 
 
-def get_books_by_tag(tag):
+def get_books_by_tag(tag:str):
     books = load_books()
     matches = []
     tag = tag.lower()
@@ -59,7 +59,7 @@ def get_books_by_tag(tag):
     return matches
 
 
-def get_books_by_author(author):
+def get_books_by_author(author:str):
     books = load_books()
     matches = []
 
@@ -70,7 +70,7 @@ def get_books_by_author(author):
     return matches
 
 
-def get_books_by_category(category):
+def get_books_by_category(category:str):
     books = load_books()
     matches = []
 
@@ -113,7 +113,7 @@ def get_popular_books(limit=5):
 # Detail Functions
 # -----------------------------
 
-def get_book_by_title(title):
+def get_book_by_title(title:str):
     book = find_book(title)
 
     if not book:
@@ -129,7 +129,7 @@ def get_book_by_title(title):
     }
 
 
-def get_availability(title):
+def get_availability(title:str):
     book = find_book(title)
 
     if not book:
@@ -141,7 +141,7 @@ def get_availability(title):
     }
 
 
-def get_shelf_location(title):
+def get_shelf_location(title:str):
     book = find_book(title)
 
     if not book:
@@ -152,7 +152,7 @@ def get_shelf_location(title):
     }
 
 
-def get_author(title):
+def get_author(title:str):
     book = find_book(title)
 
     if not book:
@@ -163,7 +163,7 @@ def get_author(title):
     }
 
 
-def get_category(title):
+def get_category(title:str):
     book = find_book(title)
 
     if not book:
@@ -174,7 +174,7 @@ def get_category(title):
     }
 
 
-def get_summary(title):
+def get_summary(title:str):
     book = find_book(title)
 
     if not book:
@@ -185,7 +185,7 @@ def get_summary(title):
     }
 
 
-def get_tags(title):
+def get_tags(title:str):
     book = find_book(title)
 
     if not book:

@@ -26,21 +26,17 @@ app = FastAPI()
 # ----------------------------
 
 from pydantic import BaseModel
-from gemini_service import chat_with_gemini
-
+from llm_service import chat_with_groq
 
 class ChatRequest(BaseModel):
     message: str
 
-
 @app.post("/chat")
 def chat(request: ChatRequest):
-    response = chat_with_gemini(request.message)
 
-    return {
-        "response": response
-    }
+    response = chat_with_groq(request.message)
 
+    return {"response": response}
 # ----------------------------
 
 
