@@ -2,13 +2,7 @@ from fastapi import FastAPI
 from event_service import *
 
 
-# start code
-# cd backend/mcp/event_api
-# uvicorn event_api:app --reload --port 8002
-
-
 app = FastAPI()
-
 
 @app.get("/")
 def home():
@@ -16,6 +10,20 @@ def home():
         "message": "Events MCP Running"
     }
 
+
+@app.get("/all")
+def all_events():
+    return load_events()
+
+
+@app.get("/health")
+def health():
+
+    events = load_events()
+    return {
+        "status": "healthy",
+        "count": len(events)
+    }
 
 # -----------------------------
 # Discovery Endpoints

@@ -1,13 +1,27 @@
 from fastapi import FastAPI
 from academic_service import *
 
-app = FastAPI()
 
+app = FastAPI()
 
 @app.get("/")
 def home():
     return {"message": "Academic MCP Running"}
 
+
+@app.get("/all")
+def all_classes():
+    return load_timetable()
+
+
+@app.get("/health")
+def health():
+    classes = load_timetable()
+    
+    return {
+        "status": "healthy",
+        "count": len(classes)
+    }
 
 # -----------------------------
 # Timetable

@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from cafeteria_service import *
 
-app = FastAPI()
 
+app = FastAPI()
 
 @app.get("/")
 def home():
@@ -10,6 +10,20 @@ def home():
         "message": "Cafeteria MCP Running"
     }
 
+
+@app.get("/all")
+def all_items():
+    return load_items()
+
+
+@app.get("/health")
+def health():
+    items = load_items()
+
+    return {
+        "status": "healthy",
+        "count": len(items)
+    }
 
 # -----------------------------
 # Discovery Endpoints

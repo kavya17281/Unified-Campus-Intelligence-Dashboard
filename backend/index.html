@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Campus Intelligence Dashboard</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const message_data = [
+            {message:"hello", sender:"user", time:"2200", id:crypto.randomUUID()},
+            {message:"hi! how can i help you", sender:"robot", time:"2201", id:crypto.randomUUID()}
+        ]
+
+        function InputBox({input, setInput, messages, setMessages}) {
+
+            async function handleSend() {
+
+                if (input.trim() === "") return;
+
+                const userMessage = {
+                    message: input,
+                    sender: "user",
+                    time: new Date().toLocaleTimeString(),
+                    id: crypto.randomUUID()
+                };
+
+                setMessages(prev => [...prev, userMessage]);
+
+                const response = await fetch("/chat", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({
+                        message: input
+                    })
+                });
+
+                const data = await response.json();
+
+                const botMessage = {
+                    message: data.response,
+                    sender: "robot",
+                    time: new Date().toLocaleTimeString(),
+                    id: crypto.randomUUID()
+                };
+
+                setMessages(prev => [...prev, botMessage]);
+                setInput("");
+            }
+
+            return (
+                <>
+                    <input
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="type your message"
+                    />
+
+                    <button onClick={handleSend}>
+                        Send
+                    </button>
+               </>
+            )
+        }
+
+        function MessageBox({message}) {
+
+            return (
+                <div>
+                    <b>{message.sender}</b>
+                    <small>{message.time}</small>
+                    <p>{message.message}</p>
+                </div>
+            );
+        }
+
+        function ShowData({mcpName, data}) {
+
+            return (
+                <div>
+                    <h3>{mcpName}</h3>
+
+                    {data.map(item => (
+                        <div key={item.id}>
+                            {JSON.stringify(item)}
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+
+
+        function App() {
+            const [messages, setMessages] = React.useState(message_data);
+            const [input, setInput] = React.useState("");
+
+            const [loading, setLoading] = React.useState(false);
+            const [mcpData, setMcpData] = React.useState({
+                "library" : [],
+                "events" : [],
+                "cafeteria" : [],
+                "academics" : []
+            })
+
+            async function updateData() {
+
+                const response = await fetch("/dashboard-data");
+
+                const data = await response.json();
+
+                setMcpData(data);
+            }
+
+            
+
+            return (
+                <>
+                    <>
+                        <InputBox
+                            input={input}
+                            setInput={setInput}
+                            messages={messages}
+                            setMessages={setMessages}
+                        />
+
+                        {messages.map(msg => <MessageBox key={msg.id} message={msg}/>)}
+                    </>
+
+                    <>
+                        <button onClick={updateData}>
+                            Update Data
+                        </button>
+                    </>
+
+                    <>
+                        <ShowData
+                            mcpName="Library"
+                            data={mcpData.library}
+                        />
+
+                        <ShowData
+                            mcpName="Events"
+                            data={mcpData.events}
+                        />
+
+
+
+                    </>
+                </>
+            );
+        }
+
+        // Render the App component into the root div
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+
+    </script>
+
+</body>
+</html>

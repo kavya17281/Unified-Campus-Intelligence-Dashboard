@@ -2,11 +2,6 @@ from fastapi import FastAPI
 from library_service import *
 
 
-# start code
-# cd backend/mcp/library_api
-# uvicorn library_api:app --reload --port 8001
-
-
 app = FastAPI()
 
 @app.get("/")
@@ -15,6 +10,20 @@ def home():
         "message": "Library MCP Running"
     }
 
+
+@app.get("/all")
+def all_books():
+    return load_books()
+
+
+@app.get("/health")
+def health():
+    books = load_books()
+    
+    return {
+        "status": "healthy",
+        "count": len(books)
+    }
 
 # -----------------------------
 # Discovery Endpoints

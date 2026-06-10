@@ -4,6 +4,10 @@ Python 3.10+
 FastAPI
 Uvicorn
 
+Run main server
+cd backend
+uvicorn main:app --reload
+
 
 Run All MCP Services
 
