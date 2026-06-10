@@ -37,6 +37,7 @@ def author_books(author: str):
 
 @app.get("/category-books")
 def category_books(category: str):
+    category = category.strip().title()
     return get_books_by_category(category)
 
 
