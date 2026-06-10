@@ -1,12 +1,8 @@
-import sys
-import os
 import json
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from shared.groq_client import client
-from .router_prompt import ROUTER_SYSTEM_PROMPT
-from .fallback_router import fallback_router
+from backend.shared.groq_client import client
+from backend.router.router_prompt import ROUTER_SYSTEM_PROMPT
+from backend.router.fallback_router import fallback_router
 
 
 def groq_router(message: str):

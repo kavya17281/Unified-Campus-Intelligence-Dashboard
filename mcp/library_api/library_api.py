@@ -31,23 +31,12 @@ def health():
 
 @app.get("/search")
 def search(query: str):
-    return search_books(query)
-
-
-@app.get("/tag-books")
-def tag_books(tag: str):
-    return get_books_by_tag(tag)
+    return discover_books(query)
 
 
 @app.get("/author-books")
 def author_books(author: str):
     return get_books_by_author(author)
-
-
-@app.get("/category-books")
-def category_books(category: str):
-    category = category.strip().title()
-    return get_books_by_category(category)
 
 
 @app.get("/latest")
@@ -58,7 +47,6 @@ def latest():
 @app.get("/popular")
 def popular():
     return get_popular_books()
-
 
 # -----------------------------
 # Detail Endpoints

@@ -1,4 +1,4 @@
-from shared.groq_client import client
+from backend.shared.groq_client import client
 
 
 def chat_general(message: str):

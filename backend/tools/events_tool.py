@@ -1,10 +1,10 @@
-LIBRARY_TOOLS = [
+EVENTS_TOOLS = [
 
     {
         "type": "function",
         "function": {
-            "name": "search_books",
-            "description": "Search books by title or topic.",
+            "name": "search_events",
+            "description": "Search events by title, description, or tags.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -18,14 +18,14 @@ LIBRARY_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "tag_books",
-            "description": "Find books matching a tag.",
+            "name": "club_events",
+            "description": "Get events by club.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "tag": {"type": "string"}
+                    "club": {"type": "string"}
                 },
-                "required": ["tag"]
+                "required": ["club"]
             }
         }
     },
@@ -33,41 +33,8 @@ LIBRARY_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "author_books",
-            "description": "Find all books written by an author.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "author": {"type": "string"}
-                },
-                "required": ["author"]
-            }
-        }
-    },
-
-    {
-        "type": "function",
-        "function": {
-            "name": "category_books",
-            "description": "Find books belonging to a category.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "category": {
-                        "type": "string",
-                        "description": "Examples: Computer Science, Mathematics, Electronics, Literature"
-                    }
-                },
-                "required": ["category"]
-            }
-        }
-    },
-
-    {
-        "type": "function",
-        "function": {
-            "name": "latest_books",
-            "description": "Get recently added books.",
+            "name": "upcoming",
+            "description": "Get upcoming events.",
             "parameters": {
                 "type": "object",
                 "properties": {}
@@ -78,8 +45,8 @@ LIBRARY_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "popular_books",
-            "description": "Get most popular books.",
+            "name": "featured",
+            "description": "Get featured events.",
             "parameters": {
                 "type": "object",
                 "properties": {}
@@ -90,8 +57,20 @@ LIBRARY_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "book_info",
-            "description": "Get complete information about a book.",
+            "name": "next_refreshments",
+            "description": "Get next event with refreshments.",
+            "parameters": {
+                "type": "object",
+                "properties": {}
+            }
+        }
+    },
+
+    {
+        "type": "function",
+        "function": {
+            "name": "event_info",
+            "description": "Get full details of an event.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -105,8 +84,8 @@ LIBRARY_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "availability",
-            "description": "Check availability of a book.",
+            "name": "venue",
+            "description": "Get event venue details.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -120,8 +99,8 @@ LIBRARY_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "shelf_location",
-            "description": "Get shelf location of a book.",
+            "name": "refreshments",
+            "description": "Get refreshments info for an event.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -135,38 +114,8 @@ LIBRARY_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "author",
-            "description": "Get author of a book.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "title": {"type": "string"}
-                },
-                "required": ["title"]
-            }
-        }
-    },
-
-    {
-        "type": "function",
-        "function": {
-            "name": "category_of_book",
-            "description": "Get category of a book.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "title": {"type": "string"}
-                },
-                "required": ["title"]
-            }
-        }
-    },
-
-    {
-        "type": "function",
-        "function": {
-            "name": "summary",
-            "description": "Get summary of a book.",
+            "name": "registration",
+            "description": "Get registration details for an event.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -181,7 +130,7 @@ LIBRARY_TOOLS = [
         "type": "function",
         "function": {
             "name": "tags",
-            "description": "Get tags associated with a book.",
+            "description": "Get tags associated with an event.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -195,8 +144,8 @@ LIBRARY_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "library_stats",
-            "description": "Get overall library statistics.",
+            "name": "stats",
+            "description": "Get overall event statistics.",
             "parameters": {
                 "type": "object",
                 "properties": {}

@@ -1,7 +1,6 @@
-from base_agent import BaseAgent
-from tools.library_tools import LIBRARY_TOOLS
-from tools.tool_routes import LIB_TOOL_ROUTES
-
+from backend.agents.base_agent import BaseAgent
+from backend.tools.library_tools import LIBRARY_TOOLS
+from backend.tools.tool_routes import LIB_TOOL_ROUTES
 
 
 LIBRARY_PROMPT = """
@@ -15,7 +14,6 @@ Rules:
 """
 
 
-
 library_agent = BaseAgent(
     system_prompt=LIBRARY_PROMPT,
     tools=LIBRARY_TOOLS,
@@ -23,8 +21,5 @@ library_agent = BaseAgent(
 )
 
 
-
 def chat_library(message: str):
     return library_agent.chat(message)
-
-

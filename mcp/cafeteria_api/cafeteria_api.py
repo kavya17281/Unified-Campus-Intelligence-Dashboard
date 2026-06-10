@@ -73,11 +73,6 @@ def price(name: str):
     return get_price(name)
 
 
-@app.get("/tags")
-def tags(name: str):
-    return get_item_tags(name)
-
-
 @app.get("/availability")
 def availability(name: str):
     return get_availability(name)

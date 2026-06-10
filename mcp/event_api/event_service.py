@@ -43,12 +43,11 @@ def event_datetime(event):
         "%Y-%m-%d %H:%M"
     )
 
-
 # -----------------------------
 # DISCOVERY FUNCTIONS
 # -----------------------------
 
-def search_events(query: str):
+def discover_events(query: str):
     events = load_events()
     matches = []
     query = query.lower()
@@ -59,27 +58,13 @@ def search_events(query: str):
 
         title_match = query in event["title"].lower()
         desc_match = query in event["description"].lower()
+
         tag_match = any(query in tag.lower() for tag in event["tags"])
 
-        if title_match or desc_match or tag_match:
+        category_match = query == event["category"].lower()
+
+        if title_match or desc_match or tag_match or category_match:
             matches.append(basic_event_info(event))
-
-    return matches
-
-
-def get_events_by_tag(tag: str):
-    events = load_events()
-    matches = []
-    tag = tag.lower()
-
-    for event in events:
-        if not is_valid_event(event):
-            continue
-
-        for t in event["tags"]:
-            if tag in t.lower():
-                matches.append(basic_event_info(event))
-                break
 
     return matches
 
@@ -94,21 +79,6 @@ def get_events_by_club(club: str):
             continue
 
         if event["club"].lower() == club:
-            matches.append(basic_event_info(event))
-
-    return matches
-
-
-def get_events_by_category(category: str):
-    events = load_events()
-    matches = []
-    category = category.lower()
-
-    for event in events:
-        if not is_valid_event(event):
-            continue
-
-        if event["category"].lower() == category:
             matches.append(basic_event_info(event))
 
     return matches

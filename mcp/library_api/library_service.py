@@ -30,31 +30,22 @@ def find_book(title:str):
 # Discovery Functions
 # -----------------------------
 
-def search_books(query:str):
+def discover_books(query: str):
     books = load_books()
     matches = []
     query = query.lower()
 
     for book in books:
-        title_match = (query in book["title"].lower())
-        tag_match = any(query in tag.lower() for tag in book["tags"])
 
-        if title_match or tag_match:
+        title_match = query in book.get("title", "").lower()
+        desc_match = query in book.get("description", "").lower()
+
+        tag_match = any(query in tag.lower() for tag in book.get("tags", []))
+
+        category_match = query in book.get("category", "").lower()
+
+        if title_match or desc_match or tag_match or category_match:
             matches.append(basic_book_info(book))
-
-    return matches
-
-
-def get_books_by_tag(tag:str):
-    books = load_books()
-    matches = []
-    tag = tag.lower()
-
-    for book in books:
-        for book_tag in book["tags"]:
-            if tag in book_tag.lower():
-                matches.append(basic_book_info(book))
-                break
 
     return matches
 
@@ -65,17 +56,6 @@ def get_books_by_author(author:str):
 
     for book in books:
         if book["author"].lower() == author.lower():
-            matches.append(basic_book_info(book))
-
-    return matches
-
-
-def get_books_by_category(category:str):
-    books = load_books()
-    matches = []
-
-    for book in books:
-        if book["category"].lower() == category.lower():
             matches.append(basic_book_info(book))
 
     return matches

@@ -31,22 +31,12 @@ def health():
 
 @app.get("/search")
 def search(query: str):
-    return search_events(query)
-
-
-@app.get("/tag-events")
-def tag_events(tag: str):
-    return get_events_by_tag(tag)
+    return discover_events(query)
 
 
 @app.get("/club-events")
 def club_events(club: str):
     return get_events_by_club(club)
-
-
-@app.get("/category-events")
-def category_events(category: str):
-    return get_events_by_category(category)
 
 
 @app.get("/upcoming")
