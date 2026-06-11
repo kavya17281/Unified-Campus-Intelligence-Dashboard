@@ -32,3 +32,12 @@ Events      http://localhost:8002
 Cafeteria   http://localhost:8003
 Academic    http://localhost:8004
 
+
+run the frontend
+cd frontend
+npm run dev
+
+cd frontend
+npm run build
+
+http://localhost:5173/

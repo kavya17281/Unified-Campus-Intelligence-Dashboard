@@ -10,7 +10,7 @@ export default function ShowCafeteria({
         normalizeToArray(data);
 
     return (
-        <div>
+        <div className="overview-section">
             <h3>Cafeteria</h3>
 
             {list.map(item => (

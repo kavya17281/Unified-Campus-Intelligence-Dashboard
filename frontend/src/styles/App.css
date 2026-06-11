@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        Inter,
+        Segoe UI,
+        sans-serif;
+
+    background-image:url("/campus-doodle.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.dashboard-layout {
+    height: 100vh;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    padding-bottom: 10px;
+}
+
+.left-panel,
+.right-panel {
+
+    flex: 1;
+
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    box-shadow:0 20px 50px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
+}
+
+.panel-title {
+
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 20px;
+    padding-left: 50px;
+    padding-top: 0;
+    padding-bottom: 25px;
+    margin-bottom: 0;
+    border-bottom:1px solid rgba(0, 0, 0, 0.08);
+}

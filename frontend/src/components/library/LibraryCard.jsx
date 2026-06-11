@@ -3,7 +3,7 @@ import { cardStyle } from "../../utils/cardStyle";
 export default function LibraryCard({ item }) {
 
     return (
-        <div style={cardStyle}>
+        <div className="overview-card">
             <p><b>{item.title}</b></p>
 
             <p>Author: {item.author}</p>

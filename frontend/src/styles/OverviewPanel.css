@@ -1,0 +1,80 @@
+.overview-container {
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.overview-content {
+
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.overview-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.overview-content::-webkit-scrollbar-thumb {
+
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+.overview-section {
+
+    margin-bottom: 24px;
+}
+
+.overview-section h3 {
+
+    margin-bottom: 12px;
+    color: #1f2937;
+}
+
+.overview-card {
+
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+
+    margin-bottom: 12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+}
+
+.overview-card p {
+
+    margin: 6px 0;
+}
+
+.academics-grid {
+
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.day-card {
+
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+}
+
+.day-card h4 {
+
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.session-item {
+
+    padding: 10px;
+    border-radius: 10px;
+    background: #f8fafc;
+
+    margin-bottom: 10px;
+}

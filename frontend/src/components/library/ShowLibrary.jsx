@@ -8,7 +8,7 @@ export default function ShowLibrary({ data }) {
         normalizeToArray(data);
 
     return (
-        <div>
+        <div className="overview-section">
             <h3>Library</h3>
 
             {list.map(item => (

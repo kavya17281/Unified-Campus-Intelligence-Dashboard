@@ -1,18 +1,12 @@
 export default function AcademicDayCard( {day, sessions} ) {
 
     return (
-        <div
-            style={{
-                border: "1px solid #ccc",
-                padding: "12px",
-                marginBottom: "15px",
-                borderRadius: "8px"
-            }}
-        >
-            <h4>
+        <div className="overview-card">
+
+            <h3>
                 {day.charAt(0).toUpperCase() +
                     day.slice(1)}
-            </h4>
+            </h3>
 
             {sessions.map((session, index) => (
                 <div

@@ -6,7 +6,7 @@ export default function ShowAcademics( {data} ) {
         return null;
 
     return (
-        <div>
+        <div className="overview-section">
             <h3>Academics</h3>
 
             {Object.entries(data).map(

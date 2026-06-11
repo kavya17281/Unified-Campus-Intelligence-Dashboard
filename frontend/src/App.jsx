@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import InputBox from "./components/chat/InputBox";
 import MessageBox from "./components/chat/MessageBox";
@@ -7,6 +7,10 @@ import ShowLibrary from "./components/library/ShowLibrary";
 import ShowEvents from "./components/events/ShowEvents";
 import ShowCafeteria from "./components/cafeteria/ShowCafeteria";
 import ShowAcademics from "./components/academics/ShowAcademics";
+
+import "./styles/App.css";
+import "./styles/AssistantPanel.css";
+import "./styles/OverviewPanel.css";
 
 const messageData = [
     {
@@ -25,14 +29,12 @@ const messageData = [
 
 export default function App() {
 
-    const [messages, setMessages] =
-        useState(messageData);
+    const [messages, setMessages] = useState(messageData);
+    const [input, setInput] = useState("");
 
-    const [input, setInput] =
-        useState("");
+    const chatRef = useRef(null);
 
-    const [mcpData, setMcpData] =
-        useState({
+    const [mcpData, setMcpData] = useState({
             library: [],
             events: [],
             cafeteria: [],
@@ -41,49 +43,75 @@ export default function App() {
 
     async function updateData() {
 
-        const response =
-            await fetch("/dashboard-data");
-
-        const data =
-            await response.json();
+        const response = await fetch("/dashboard-data");
+        const data = await response.json();
 
         setMcpData(data);
     }
 
+
+    useEffect(() => {
+        chatRef.current?.scrollTo({
+            top: chatRef.current.scrollHeight,
+            behavior: "smooth"
+        });
+    }, [messages]);
+
+    useEffect(() => {updateData();}, []);
+
     return (
-        <>
-            <InputBox
-                input={input}
-                setInput={setInput}
-                setMessages={setMessages}
-            />
+        <div className="dashboard-layout">
+            <div className="left-panel">
+                <div className="assistant-container">
 
-            {messages.map(msg => (
-                <MessageBox
-                    key={msg.id}
-                    message={msg}
-                />
-            ))}
+                    <div className="chat-history" ref={chatRef}>
+                        <div className="messages">
 
-            <button onClick={updateData}>
-                Update Data
-            </button>
+                        {messages.map(msg => (
+                            <MessageBox
+                                key={msg.id}
+                                message={msg}
+                            />
+                        ))}
+                        </div>
+                    </div>
 
-            <ShowLibrary
-                data={mcpData.library}
-            />
+                    <InputBox
+                        input={input}
+                        setInput={setInput}
+                        setMessages={setMessages}
+                    />
+                </div>
+            </div>
 
-            <ShowEvents
-                data={mcpData.events}
-            />
 
-            <ShowCafeteria
-                data={mcpData.cafeteria}
-            />
+            <div className="right-panel">
+                <div className="overview-container">
 
-            <ShowAcademics
-                data={mcpData.academics}
-            />
-        </>
+                        <p className="panel-title">Campus Overview</p>
+
+                        <div className="overview-content">
+
+                            <ShowLibrary
+                                data={mcpData.library}
+                            />
+
+                            <ShowEvents
+                                data={mcpData.events}
+                            />
+
+                            <ShowCafeteria
+                                data={mcpData.cafeteria}
+                            />
+
+                            <ShowAcademics
+                                data={mcpData.academics}
+                            />
+                        </div>
+                </div>
+
+            </div>
+
+        </div>
     );
 }

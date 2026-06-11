@@ -3,7 +3,7 @@ import { cardStyle } from "../../utils/cardStyle";
 export default function EventCard({ item }) {
 
     return (
-        <div style={cardStyle}>
+        <div className="overview-card ">
             <p><b>{item.title}</b></p>
 
             <p>{item.date} | {item.start_time} - {item.end_time}</p>

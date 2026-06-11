@@ -8,7 +8,7 @@ export default function ShowEvents({ data }) {
         normalizeToArray(data);
 
     return (
-        <div>
+        <div className="overview-section">
             <h3>Events</h3>
 
             {list.map(item => (

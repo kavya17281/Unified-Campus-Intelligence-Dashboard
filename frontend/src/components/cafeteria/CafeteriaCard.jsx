@@ -3,7 +3,7 @@ import { cardStyle } from "../../utils/cardStyle";
 export default function CafeteriaCard({ item }) {
 
     return (
-        <div style={cardStyle}>
+        <div className="overview-card">
             <p><b>{item.name}</b></p>
 
             <p>Category: {item.category}</p>
