@@ -83,16 +83,194 @@
             );
         }
 
-        function ShowData({mcpName, data}) {
+
+        function normalizeToArray(data) {
+            if (!data) return [];
+
+            // Case 1: already an array
+            if (Array.isArray(data)) return data;
+
+            // Case 2: dictionary like {monday: [], tuesday: []}
+            if (typeof data === "object") {
+                return Object.values(data).flat();
+            }
+
+            return [];
+        }
+
+        const cardStyle = {
+            border: "1px solid #ccc",
+            padding: "10px",
+            marginBottom: "10px",
+            borderRadius: "8px"
+        };
+
+        function LibraryCard({ item }) {
+            return (
+                <div style={cardStyle}>
+                    <p><b>{item.title}</b></p>
+
+                    <p>Author: {item.author}</p>
+                    <p>Category: {item.category}</p>
+
+                    <p>{item.summary}</p>
+
+                    <p>
+                        Copies: {item.copies} | Shelf: {item.shelf}
+                    </p>
+
+                    <p>
+                        Status: {item.available ? "Available" : "Not Available"}
+                    </p>
+
+                    <p>
+                        Popularity: {item.popularity}
+                    </p>
+                </div>
+            );
+        }
+
+        function EventCard({ item }) {
+            return (
+                <div style={cardStyle}>
+                    <p><b>{item.title}</b></p>
+
+                    <p>
+                        {item.date} | {item.start_time} - {item.end_time}
+                    </p>
+
+                    <p>
+                        {item.venue} | {item.category}
+                    </p>
+
+                    <p>{item.description}</p>
+
+                    <p>Club: {item.club}</p>
+
+                    {item.refreshments && (
+                        <p>Refreshments: {item.refreshments}</p>
+                    )}
+
+                    <p>
+                        {item.registration_required ? "Registration Required" : "Open Entry"}
+                    </p>
+                </div>
+            );
+        }
+
+        function CafeteriaCard({ item }) {
+            return (
+                <div style={cardStyle}>
+                    <p><b>{item.name}</b></p>
+
+                    <p>Category: {item.category}</p>
+
+                    <p>Price: ₹{item.price}</p>
+
+                    <p>
+                        {item.is_veg ? "Vegetarian" : "Non-Vegetarian"}
+                    </p>
+
+                    <p>
+                        Status: {item.available ? "Available" : "Not Available"}
+                    </p>
+
+                    {item.tags && (
+                        <p>Tags: {item.tags.join(", ")}</p>
+                    )}
+                </div>
+            );
+        }
+
+        function AcademicDayCard({ day, sessions }) {
+
+            return (
+                <div
+                    style={{
+                        border: "1px solid #ccc",
+                        padding: "12px",
+                        marginBottom: "15px",
+                        borderRadius: "8px"
+                    }}
+                >
+                    <h4>
+                        {day.charAt(0).toUpperCase() + day.slice(1)}
+                    </h4>
+
+                    {sessions.map((session, index) => (
+                        <div
+                            key={index}
+                            style={{
+                                marginBottom: "10px"
+                            }}
+                        >
+                            <p>
+                                <b>{session.subject}</b>
+                            </p>
+
+                            <p>
+                                {session.time}
+                            </p>
+
+                            <p>
+                                {session.type} | {session.room}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+
+        function ShowLibrary({ data }) {
+            const list = normalizeToArray(data);
+            return (
+                <div>
+                    <h3>Library</h3>
+                    {list.map(item => (
+                        <LibraryCard key={item.id} item={item} />
+                    ))}
+                </div>
+            );
+        }
+
+        function ShowEvents({ data }) {
+            const list = normalizeToArray(data);
+            return (
+                <div>
+                    <h3>Events</h3>
+                    {list.map(item => (
+                        <EventCard key={item.id} item={item} />
+                    ))}
+                </div>
+            );
+        }
+
+        function ShowCafeteria({ data }) {
+            const list = normalizeToArray(data);
+            return (
+                <div>
+                    <h3>Cafeteria</h3>
+                    {list.map(item => (
+                        <CafeteriaCard key={item.id} item={item} />
+                    ))}
+                </div>
+            );
+        }
+
+        function ShowAcademics({ data }) {
+
+            if (!data) return null;
 
             return (
                 <div>
-                    <h3>{mcpName}</h3>
+                    <h3>Academics</h3>
 
-                    {data.map(item => (
-                        <div key={item.id}>
-                            {JSON.stringify(item)}
-                        </div>
+                    {Object.entries(data).map(([day, sessions]) => (
+                        <AcademicDayCard
+                            key={day}
+                            day={day}
+                            sessions={sessions}
+                        />
                     ))}
                 </div>
             );
@@ -111,6 +289,9 @@
                 "academics" : []
             })
 
+
+
+
             async function updateData() {
 
                 const response = await fetch("/dashboard-data");
@@ -120,7 +301,8 @@
                 setMcpData(data);
             }
 
-            
+
+
 
             return (
                 <>
@@ -142,18 +324,13 @@
                     </>
 
                     <>
-                        <ShowData
-                            mcpName="Library"
-                            data={mcpData.library}
-                        />
+                        <ShowLibrary data={mcpData.library} />
 
-                        <ShowData
-                            mcpName="Events"
-                            data={mcpData.events}
-                        />
+                        <ShowEvents data={mcpData.events} />
 
+                        <ShowCafeteria data={mcpData.cafeteria} />
 
-
+                        <ShowAcademics data={mcpData.academics} />
                     </>
                 </>
             );
