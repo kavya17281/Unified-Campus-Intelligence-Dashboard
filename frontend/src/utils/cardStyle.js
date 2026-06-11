@@ -1,0 +1,6 @@
+export const cardStyle = {
+    border: "1px solid #ccc",
+    padding: "10px",
+    marginBottom: "10px",
+    borderRadius: "8px"
+};
