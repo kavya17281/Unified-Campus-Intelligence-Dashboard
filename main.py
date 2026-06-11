@@ -1,6 +1,8 @@
 import requests
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+
 from pydantic import BaseModel
 from backend.router.groq_router import groq_router
 
@@ -10,12 +12,19 @@ from backend.agents.cafeteria_agent import chat_cafeteria
 from backend.agents.academics_agent import chat_academic
 from backend.agents.general_agent import chat_general
 
+
 app = FastAPI()
+
+app.mount(
+    "/assets",
+    StaticFiles(directory="frontend/dist/assets"),
+    name="assets"
+)
 
 
 @app.get("/")
 def home():
-    return FileResponse("frontend/index.html")
+    return FileResponse("frontend/dist/index.html")
 
 
 @app.get("/dashboard-data")
@@ -43,6 +52,12 @@ def chat(request: ChatRequest):
     response = handle_message(request.message)
 
     return {"response": response}
+
+
+@app.get("/{full_path:path}")
+def spa_fallback(full_path: str):
+    return FileResponse("frontend/dist/index.html")
+
 
 
 def handle_message(message: str):
