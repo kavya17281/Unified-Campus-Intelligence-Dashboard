@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Campus Intelligence Dashboard</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const message_data = [
+            {message:"hello", sender:"user", time:"2200", id:crypto.randomUUID()},
+            {message:"hi! how can i help you", sender:"robot", time:"2201", id:crypto.randomUUID()}
+        ]
+
+        function InputBox({input, setInput, messages, setMessages}) {
+
+            async function handleSend() {
+
+                if (input.trim() === "") return;
+
+                const userMessage = {
+                    message: input,
+                    sender: "user",
+                    time: new Date().toLocaleTimeString(),
+                    id: crypto.randomUUID()
+                };
+
+                setMessages(prev => [...prev, userMessage]);
+
+                const response = await fetch("/chat", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({
+                        message: input
+                    })
+                });
+
+                const data = await response.json();
+
+                const botMessage = {
+                    message: data.response,
+                    sender: "robot",
+                    time: new Date().toLocaleTimeString(),
+                    id: crypto.randomUUID()
+                };
+
+                setMessages(prev => [...prev, botMessage]);
+                setInput("");
+            }
+
+            return (
+                <>
+                    <input
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="type your message"
+                    />
+
+                    <button onClick={handleSend}>
+                        Send
+                    </button>
+               </>
+            )
+        }
+
+        function MessageBox({message}) {
+
+            return (
+                <div>
+                    <b>{message.sender}</b>
+                    <small>{message.time}</small>
+                    <p>{message.message}</p>
+                </div>
+            );
+        }
+
+
+        function normalizeToArray(data) {
+            if (!data) return [];
+
+            // Case 1: already an array
+            if (Array.isArray(data)) return data;
+
+            // Case 2: dictionary like {monday: [], tuesday: []}
+            if (typeof data === "object") {
+                return Object.values(data).flat();
+            }
+
+            return [];
+        }
+
+        const cardStyle = {
+            border: "1px solid #ccc",
+            padding: "10px",
+            marginBottom: "10px",
+            borderRadius: "8px"
+        };
+
+        function LibraryCard({ item }) {
+            return (
+                <div style={cardStyle}>
+                    <p><b>{item.title}</b></p>
+
+                    <p>Author: {item.author}</p>
+                    <p>Category: {item.category}</p>
+
+                    <p>{item.summary}</p>
+
+                    <p>
+                        Copies: {item.copies} | Shelf: {item.shelf}
+                    </p>
+
+                    <p>
+                        Status: {item.available ? "Available" : "Not Available"}
+                    </p>
+
+                    <p>
+                        Popularity: {item.popularity}
+                    </p>
+                </div>
+            );
+        }
+
+        function EventCard({ item }) {
+            return (
+                <div style={cardStyle}>
+                    <p><b>{item.title}</b></p>
+
+                    <p>
+                        {item.date} | {item.start_time} - {item.end_time}
+                    </p>
+
+                    <p>
+                        {item.venue} | {item.category}
+                    </p>
+
+                    <p>{item.description}</p>
+
+                    <p>Club: {item.club}</p>
+
+                    {item.refreshments && (
+                        <p>Refreshments: {item.refreshments}</p>
+                    )}
+
+                    <p>
+                        {item.registration_required ? "Registration Required" : "Open Entry"}
+                    </p>
+                </div>
+            );
+        }
+
+        function CafeteriaCard({ item }) {
+            return (
+                <div style={cardStyle}>
+                    <p><b>{item.name}</b></p>
+
+                    <p>Category: {item.category}</p>
+
+                    <p>Price: ₹{item.price}</p>
+
+                    <p>
+                        {item.is_veg ? "Vegetarian" : "Non-Vegetarian"}
+                    </p>
+
+                    <p>
+                        Status: {item.available ? "Available" : "Not Available"}
+                    </p>
+
+                    {item.tags && (
+                        <p>Tags: {item.tags.join(", ")}</p>
+                    )}
+                </div>
+            );
+        }
+
+        function AcademicDayCard({ day, sessions }) {
+
+            return (
+                <div
+                    style={{
+                        border: "1px solid #ccc",
+                        padding: "12px",
+                        marginBottom: "15px",
+                        borderRadius: "8px"
+                    }}
+                >
+                    <h4>
+                        {day.charAt(0).toUpperCase() + day.slice(1)}
+                    </h4>
+
+                    {sessions.map((session, index) => (
+                        <div
+                            key={index}
+                            style={{
+                                marginBottom: "10px"
+                            }}
+                        >
+                            <p>
+                                <b>{session.subject}</b>
+                            </p>
+
+                            <p>
+                                {session.time}
+                            </p>
+
+                            <p>
+                                {session.type} | {session.room}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+
+        function ShowLibrary({ data }) {
+            const list = normalizeToArray(data);
+            return (
+                <div>
+                    <h3>Library</h3>
+                    {list.map(item => (
+                        <LibraryCard key={item.id} item={item} />
+                    ))}
+                </div>
+            );
+        }
+
+        function ShowEvents({ data }) {
+            const list = normalizeToArray(data);
+            return (
+                <div>
+                    <h3>Events</h3>
+                    {list.map(item => (
+                        <EventCard key={item.id} item={item} />
+                    ))}
+                </div>
+            );
+        }
+
+        function ShowCafeteria({ data }) {
+            const list = normalizeToArray(data);
+            return (
+                <div>
+                    <h3>Cafeteria</h3>
+                    {list.map(item => (
+                        <CafeteriaCard key={item.id} item={item} />
+                    ))}
+                </div>
+            );
+        }
+
+        function ShowAcademics({ data }) {
+
+            if (!data) return null;
+
+            return (
+                <div>
+                    <h3>Academics</h3>
+
+                    {Object.entries(data).map(([day, sessions]) => (
+                        <AcademicDayCard
+                            key={day}
+                            day={day}
+                            sessions={sessions}
+                        />
+                    ))}
+                </div>
+            );
+        }
+
+
+        function App() {
+            const [messages, setMessages] = React.useState(message_data);
+            const [input, setInput] = React.useState("");
+
+            const [loading, setLoading] = React.useState(false);
+            const [mcpData, setMcpData] = React.useState({
+                "library" : [],
+                "events" : [],
+                "cafeteria" : [],
+                "academics" : []
+            })
+
+
+
+
+            async function updateData() {
+
+                const response = await fetch("/dashboard-data");
+
+                const data = await response.json();
+
+                setMcpData(data);
+            }
+
+
+
+
+            return (
+                <>
+                    <>
+                        <InputBox
+                            input={input}
+                            setInput={setInput}
+                            messages={messages}
+                            setMessages={setMessages}
+                        />
+
+                        {messages.map(msg => <MessageBox key={msg.id} message={msg}/>)}
+                    </>
+
+                    <>
+                        <button onClick={updateData}>
+                            Update Data
+                        </button>
+                    </>
+
+                    <>
+                        <ShowLibrary data={mcpData.library} />
+
+                        <ShowEvents data={mcpData.events} />
+
+                        <ShowCafeteria data={mcpData.cafeteria} />
+
+                        <ShowAcademics data={mcpData.academics} />
+                    </>
+                </>
+            );
+        }
+
+        // Render the App component into the root div
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+
+    </script>
+
+</body>
+</html>
