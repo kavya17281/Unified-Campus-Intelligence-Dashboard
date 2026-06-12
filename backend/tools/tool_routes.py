@@ -3,16 +3,14 @@ from backend.config import *
 
 LIB_TOOL_ROUTES = {
 
-    "search_books" : f"{LIBRARY_API}/search",
-    "tag_books" : f"{LIBRARY_API}/tag-books",
+    "discover_books" : f"{LIBRARY_API}/search",
     "author_books" : f"{LIBRARY_API}/author-books",
-    "category_books" : f"{LIBRARY_API}/category-books",
     "latest_books" : f"{LIBRARY_API}/latest",
     "popular_books" : f"{LIBRARY_API}/popular",
     "book_info" : f"{LIBRARY_API}/book",
-    "availability" : f"{LIBRARY_API}/availability",
+    "availability_of_book" : f"{LIBRARY_API}/availability",
     "shelf_location" : f"{LIBRARY_API}/shelf",
-    "author" : f"{LIBRARY_API}/author",
+    "author_who" : f"{LIBRARY_API}/author",
     "category_of_book" : f"{LIBRARY_API}/category",
     "summary" : f"{LIBRARY_API}/summary",
     "tags" : f"{LIBRARY_API}/tags",
@@ -32,7 +30,7 @@ EVENTS_TOOL_ROUTES = {
 
     "event_info": f"{EVENTS_API}/event",
     "venue": f"{EVENTS_API}/venue",
-    "refreshments": f"{EVENTS_API}/refreshments",
+    "refreshments_given": f"{EVENTS_API}/refreshments",
     "registration": f"{EVENTS_API}/registration",
     "tags": f"{EVENTS_API}/tags",
 
@@ -42,7 +40,7 @@ EVENTS_TOOL_ROUTES = {
 
 CAFETERIA_TOOL_ROUTES = {
 
-    "search_items": f"{CAFETERIA_API}/search",
+    "search_food": f"{CAFETERIA_API}/search",
     "category_items": f"{CAFETERIA_API}/category",
 
     "veg_items": f"{CAFETERIA_API}/veg",

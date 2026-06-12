@@ -75,7 +75,7 @@ LIBRARY_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "availability",
+            "name": "availability_of_book",
             "description": "Check availability of a book.",
             "parameters": {
                 "type": "object",
@@ -105,7 +105,7 @@ LIBRARY_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "author",
+            "name": "author_who",
             "description": "Get author of a book.",
             "parameters": {
                 "type": "object",

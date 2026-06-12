@@ -3,8 +3,8 @@ CAFETERIA_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "search_items",
-            "description": "Search cafeteria items by name or keyword.",
+            "name": "search_food",
+            "description": "Search items from menu by name or keyword.",
             "parameters": {
                 "type": "object",
                 "properties": {

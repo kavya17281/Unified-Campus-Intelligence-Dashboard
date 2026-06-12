@@ -75,7 +75,6 @@ class BaseAgent:
 
         # Step 1: Tool selection
         response = self.run_tool_llm(messages)
-        #print(response)
         assistant_message = response.choices[0].message
 
         if not assistant_message.tool_calls:
@@ -85,7 +84,7 @@ class BaseAgent:
         # Step 2: Execute tool
         tool_call = assistant_message.tool_calls[0]
         tool_result = self.execute_tool(tool_call)
-
+        print(tool_result)
 
         # Step 3: Build answer prompt
         answer_messages = [

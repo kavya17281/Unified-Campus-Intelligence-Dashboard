@@ -174,13 +174,20 @@ def get_upcoming_exams():
     exams = load_exams()
 
     def parse_date(d):
-        return datetime.strptime(d["date"], "%d.%m.%Y")
+        return datetime.strptime(d["date"], "%Y-%m-%d")
 
     return sorted(exams, key=parse_date)
 
 
 def get_next_exam():
-    return get_upcoming_exams()[0] if get_upcoming_exams() else None
+    today = datetime.today().date()
+
+    exams = [
+        e for e in get_upcoming_exams()
+        if datetime.fromisoformat(e["date"]).date() >= today
+    ]
+
+    return exams[0] if exams else None
 
 
 def get_next_exam_by_subject(subject: str):

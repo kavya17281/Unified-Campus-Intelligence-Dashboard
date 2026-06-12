@@ -85,7 +85,7 @@ EVENTS_TOOLS = [
         "type": "function",
         "function": {
             "name": "venue",
-            "description": "Get event venue details.",
+            "description": "Look up the room or location where a session is being held. Use this for any question about where a talk takes place, which room it is in, or its location. ",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -99,7 +99,7 @@ EVENTS_TOOLS = [
     {
         "type": "function",
         "function": {
-            "name": "refreshments",
+            "name": "refreshments_given",
             "description": "Get refreshments info for an event.",
             "parameters": {
                 "type": "object",
