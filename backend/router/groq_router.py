@@ -41,9 +41,3 @@ def groq_router(message: str):
     except Exception:
         # If Groq fails completely → fallback
         return fallback_router(message)
-    
-print(
-    groq_router(
-        "hello groqhow are you"
-    )
-)

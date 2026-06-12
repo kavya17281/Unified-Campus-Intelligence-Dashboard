@@ -12,6 +12,7 @@ from backend.agents.cafeteria_agent import chat_cafeteria
 from backend.agents.academics_agent import chat_academic
 from backend.agents.general_agent import chat_general
 
+from backend.config import *
 
 app = FastAPI()
 
@@ -30,10 +31,10 @@ def home():
 @app.get("/dashboard-data")
 def dashboard_data():
 
-    library = requests.get("http://127.0.0.1:8001/all").json()
-    events = requests.get("http://127.0.0.1:8002/all").json()
-    cafeteria = requests.get("http://127.0.0.1:8003/all").json()
-    academics = requests.get("http://127.0.0.1:8004/all").json()
+    library = requests.get(f"{LIBRARY_API}/all").json()
+    events = requests.get(f"{EVENTS_API}/all").json()
+    cafeteria = requests.get(f"{CAFETERIA_API}/all").json()
+    academics = requests.get(f"{ACADEMICS_API}/all").json()
 
     return {
         "library": library,

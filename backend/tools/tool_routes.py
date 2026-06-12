@@ -1,78 +1,75 @@
-LIBRARY_BASE = "http://127.0.0.1:8001"
-EVENTS_BASE = "http://127.0.0.1:8002"
-CAFETERIA_BASE = "http://127.0.0.1:8003"
-ACADEMIC_BASE = "http://127.0.0.1:8004"
+from backend.config import *
 
 
 LIB_TOOL_ROUTES = {
 
-    "search_books" : f"{LIBRARY_BASE}/search",
-    "tag_books" : f"{LIBRARY_BASE}/tag-books",
-    "author_books" : f"{LIBRARY_BASE}/author-books",
-    "category_books" : f"{LIBRARY_BASE}/category-books",
-    "latest_books" : f"{LIBRARY_BASE}/latest",
-    "popular_books" : f"{LIBRARY_BASE}/popular",
-    "book_info" : f"{LIBRARY_BASE}/book",
-    "availability" : f"{LIBRARY_BASE}/availability",
-    "shelf_location" : f"{LIBRARY_BASE}/shelf",
-    "author" : f"{LIBRARY_BASE}/author",
-    "category_of_book" : f"{LIBRARY_BASE}/category",
-    "summary" : f"{LIBRARY_BASE}/summary",
-    "tags" : f"{LIBRARY_BASE}/tags",
-    "library_stats" : f"{LIBRARY_BASE}/stats",
+    "search_books" : f"{LIBRARY_API}/search",
+    "tag_books" : f"{LIBRARY_API}/tag-books",
+    "author_books" : f"{LIBRARY_API}/author-books",
+    "category_books" : f"{LIBRARY_API}/category-books",
+    "latest_books" : f"{LIBRARY_API}/latest",
+    "popular_books" : f"{LIBRARY_API}/popular",
+    "book_info" : f"{LIBRARY_API}/book",
+    "availability" : f"{LIBRARY_API}/availability",
+    "shelf_location" : f"{LIBRARY_API}/shelf",
+    "author" : f"{LIBRARY_API}/author",
+    "category_of_book" : f"{LIBRARY_API}/category",
+    "summary" : f"{LIBRARY_API}/summary",
+    "tags" : f"{LIBRARY_API}/tags",
+    "library_stats" : f"{LIBRARY_API}/stats",
 
 }
 
 
 EVENTS_TOOL_ROUTES = {
 
-    "search_events": f"{EVENTS_BASE}/search",
-    "club_events": f"{EVENTS_BASE}/club-events",
+    "search_events": f"{EVENTS_API}/search",
+    "club_events": f"{EVENTS_API}/club-events",
 
-    "upcoming": f"{EVENTS_BASE}/upcoming",
-    "featured": f"{EVENTS_BASE}/featured",
-    "next_refreshments": f"{EVENTS_BASE}/next-refreshments",
+    "upcoming": f"{EVENTS_API}/upcoming",
+    "featured": f"{EVENTS_API}/featured",
+    "next_refreshments": f"{EVENTS_API}/next-refreshments",
 
-    "event_info": f"{EVENTS_BASE}/event",
-    "venue": f"{EVENTS_BASE}/venue",
-    "refreshments": f"{EVENTS_BASE}/refreshments",
-    "registration": f"{EVENTS_BASE}/registration",
-    "tags": f"{EVENTS_BASE}/tags",
+    "event_info": f"{EVENTS_API}/event",
+    "venue": f"{EVENTS_API}/venue",
+    "refreshments": f"{EVENTS_API}/refreshments",
+    "registration": f"{EVENTS_API}/registration",
+    "tags": f"{EVENTS_API}/tags",
 
-    "stats": f"{EVENTS_BASE}/stats"
+    "stats": f"{EVENTS_API}/stats"
 }
 
 
 CAFETERIA_TOOL_ROUTES = {
 
-    "search_items": f"{CAFETERIA_BASE}/search",
-    "category_items": f"{CAFETERIA_BASE}/category",
+    "search_items": f"{CAFETERIA_API}/search",
+    "category_items": f"{CAFETERIA_API}/category",
 
-    "veg_items": f"{CAFETERIA_BASE}/veg",
-    "non_veg_items": f"{CAFETERIA_BASE}/non-veg",
+    "veg_items": f"{CAFETERIA_API}/veg",
+    "non_veg_items": f"{CAFETERIA_API}/non-veg",
 
-    "available_items": f"{CAFETERIA_BASE}/available",
-    "under_price": f"{CAFETERIA_BASE}/under-price",
+    "available_items": f"{CAFETERIA_API}/available",
+    "under_price": f"{CAFETERIA_API}/under-price",
 
-    "item_info": f"{CAFETERIA_BASE}/item",
-    "price": f"{CAFETERIA_BASE}/price",
-    "availability": f"{CAFETERIA_BASE}/availability",
+    "item_info": f"{CAFETERIA_API}/item",
+    "price": f"{CAFETERIA_API}/price",
+    "availability": f"{CAFETERIA_API}/availability",
 
-    "stats": f"{CAFETERIA_BASE}/stats"
+    "stats": f"{CAFETERIA_API}/stats"
 }
 
 
 ACADEMIC_TOOL_ROUTES = {
 
-    "today": f"{ACADEMIC_BASE}/today",
-    "tomorrow": f"{ACADEMIC_BASE}/tomorrow",
-    "day": f"{ACADEMIC_BASE}/day",
+    "today": f"{ACADEMICS_API}/today",
+    "tomorrow": f"{ACADEMICS_API}/tomorrow",
+    "day": f"{ACADEMICS_API}/day",
 
-    "subject_schedule": f"{ACADEMIC_BASE}/subject",
+    "subject_schedule": f"{ACADEMICS_API}/subject",
 
-    "exams": f"{ACADEMIC_BASE}/exams",
-    "next_exam": f"{ACADEMIC_BASE}/next-exam",
-    "next_exam_subject": f"{ACADEMIC_BASE}/next-exam-subject",
+    "exams": f"{ACADEMICS_API}/exams",
+    "next_exam": f"{ACADEMICS_API}/next-exam",
+    "next_exam_subject": f"{ACADEMICS_API}/next-exam-subject",
 
-    "stats": f"{ACADEMIC_BASE}/stats"
+    "stats": f"{ACADEMICS_API}/stats"
 }

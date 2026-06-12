@@ -17,12 +17,6 @@ If the tool returned an error, explain that the information could not be retriev
 class BaseAgent:
 
     def __init__(self, system_prompt, tools, tool_routes):
-        """
-        tool_routes = {
-            "get_author": "http://127.0.0.1:8001/author",
-            "search_books": "http://127.0.0.1:8001/search"
-        }
-        """
         self.system_prompt = system_prompt
         self.tools = tools
         self.tool_routes = tool_routes
