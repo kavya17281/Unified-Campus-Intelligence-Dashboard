@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from cafeteria_service import *
+from mcp.cafeteria_api.cafeteria_service import *
 
 
 app = FastAPI()

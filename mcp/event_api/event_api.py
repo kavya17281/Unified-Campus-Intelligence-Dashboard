@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from event_service import *
+from mcp.event_api.event_service import *
 
 
 app = FastAPI()

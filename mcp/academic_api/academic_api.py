@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from academic_service import *
+from mcp.academic_api.academic_service import *
 
 
 app = FastAPI()

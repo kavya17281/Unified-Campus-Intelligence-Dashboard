@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from library_service import *
+from mcp.library_api.library_service import *
 
 
 app = FastAPI()
