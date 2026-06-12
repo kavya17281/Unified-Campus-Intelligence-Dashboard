@@ -1,55 +1,69 @@
-export default function InputBox( {input, setInput, setMessages} ){
+export default function InputBox( {input, setInput, setMessages, isLoading, setIsLoading} ){
 
     async function handleSend() {
 
         if (input.trim() === "")
             return;
 
-        const userMessage = {
-            message: input,
-            sender: "user",
-            time: new Date().toLocaleTimeString(),
-            id: crypto.randomUUID()
-        };
+        setIsLoading(true);
 
-        setMessages(prev => [...prev, userMessage]);
+        try {
+            const userMessage = {
+                message: input,
+                sender: "user",
+                time: new Date().toLocaleTimeString(),
+                id: crypto.randomUUID()
+            };
 
-        const response = await fetch("/chat", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                message: input
-            })
-        });
+            setMessages(prev => [...prev, userMessage]);
 
-        const data = await response.json();
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({message: input})
+            });
 
-        const assistantMessage = {
-            message: data.response,
-            sender: "assistant",
-            time: new Date().toLocaleTimeString(),
-            id: crypto.randomUUID()
-        };
+            const data = await response.json();
 
-        setMessages(prev => [...prev, assistantMessage]);
+            const assistantMessage = {
+                message: data.response,
+                sender: "assistant",
+                time: new Date().toLocaleTimeString(),
+                id: crypto.randomUUID()
+            };
 
-        setInput("");
+            setMessages(prev => [...prev, assistantMessage]);
+
+            setInput("");
+
+        } finally { setIsLoading(false) }
+
     }
 
     return (
         <div className="chat-input-container">
             <div className="chat-input-bar">
             <input
+                disabled={isLoading}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                    console.log("Pressed:", e.key);
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        handleSend();
+                    }
+                }}
                 placeholder="type your message"
                 className="chat-input"
             />
 
-            <button onClick={handleSend} className="send-button">
-                Send
+            <button 
+                onClick={handleSend} 
+                className="send-button"
+                disabled={isLoading}
+            >
+                {isLoading ? "Thinking..." : "Send"}
             </button>
             </div>
         </div>

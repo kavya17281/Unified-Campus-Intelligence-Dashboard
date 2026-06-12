@@ -31,6 +31,7 @@ export default function App() {
 
     const [messages, setMessages] = useState(messageData);
     const [input, setInput] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const chatRef = useRef(null);
 
@@ -80,6 +81,8 @@ export default function App() {
                         input={input}
                         setInput={setInput}
                         setMessages={setMessages}
+                        isLoading={isLoading}
+                        setIsLoading={setIsLoading}
                     />
                 </div>
             </div>
