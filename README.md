@@ -1,4 +1,4 @@
-# Unified Campus Intelligence Dashboard
+# Unified Campus Intelligence Dashboard with AI Assistant
 
 ## Project Description
 
@@ -60,7 +60,7 @@ But each time a command is sent the assistant, it calls the API to fetch the des
 ---
 
 ## System Architecture
-
+```text
 User Query
 ↓
 Router Agent
@@ -76,6 +76,7 @@ MCP APIs
 Structured Campus Data
 ↓
 Natural Language Response
+```
 
 ---
 
