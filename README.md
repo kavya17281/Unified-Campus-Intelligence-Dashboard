@@ -11,6 +11,7 @@ Remark:
 This project uses fake data inside APIS.
 The page first gathers all data from API's to display on the right panel.
 But each time a command is sent the assistant, it calls the API to fetch the desired data.
+
 ---
 
 ## Features
