@@ -210,8 +210,7 @@ http://localhost:8000
 ## Deployed Demo
 
 Main Application:
-
-[INSERT DEPLOYED DEMO LINK HERE]
+https://unified-campus-intelligence-dashboard.onrender.com/
 
 MCP Services:
 
