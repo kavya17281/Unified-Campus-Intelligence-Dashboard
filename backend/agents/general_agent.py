@@ -16,6 +16,7 @@ def chat_general(message: str):
                     You can:
                     - greet users
                     - answer general conversational questions
+                    - if a question is asked out of campus data, don't answer that and ask if they need some other information related campus
                     - be polite and conversational
 
                     Keep responses short and natural.

@@ -7,7 +7,10 @@ Unified Campus Intelligence Dashboard is an AI-powered campus assistant designed
 The system combines specialized AI agents with modular MCP (Model Context Protocol) APIs to retrieve structured information and generate contextual responses.
 
 
-Remark: This project uses fake data inside APIS.
+Remark:
+This project uses fake data inside APIS.
+The page first gathers all data from API's to display on the right panel.
+But each time a command is sent the assistant, it calls the API to fetch the desired data.
 ---
 
 ## Features
@@ -16,7 +19,7 @@ Remark: This project uses fake data inside APIS.
 
 * Natural language question answering
 * Intelligent query routing
-* Context-aware responses
+* Fetches data from the API's
 
 ### Library Services
 
@@ -32,15 +35,15 @@ Remark: This project uses fake data inside APIS.
 
 ### Academic Information
 
-* Course-related information
-* Academic resources
-* Department and campus data
+* Course-schedule information
+* Exam schedule
+* Cancelled and postponed classes included
 
 ### Cafeteria Services
 
 * Menu information
 * Food availability
-* Dining-related queries
+* Cost related information
 
 ### Dashboard Overview
 
@@ -113,11 +116,13 @@ project/
 ├── frontend/
 │   ├── src/
 │   └── dist/
+│   └── public/
 │
 ├── backend/
 │   ├── agents/
 │   ├── router/
-│   └── ...
+│   └── shared/
+│   └── tools/
 │
 ├── mcp/
 │   ├── library_api/
@@ -130,14 +135,17 @@ project/
 └── README.md
 ```
 
-## Setup Instructions
+## Setup Instructions 
 
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
-cd your-repository
+git clone https://github.com/kavya17281/Unified-Campus-Intelligence-Dashboard.git
+cd Unified-Campus-Intelligence-Dashboard
 ```
+
+You would need to make a .env file inside backend folder with
+GROQ_API_KEY="<YOUR_API_KEY>"
 
 ### 2. Install Backend Dependencies
 
@@ -160,9 +168,28 @@ npm run build
 
 ### 5. Run MCP Services
 
-Start the individual MCP API services.
+Open 4 new terminals, and in each terminal
+```bash
+uvicorn mcp.library_api.library_api:app --reload --port 8001
+```
+
+```bash
+uvicorn mcp.event_api.event_api:app --reload --port 8002
+```
+
+```bash
+uvicorn mcp.cafeteria_api.cafeteria_api:app --reload --port 8003
+```
+
+```bash
+uvicorn mcp.academic_api.academic_api:app --reload --port 8004
+```
+
+also in backend/config.py comment all hosted links and use the local server links
 
 ### 6. Run Main Application
+
+In a new terminal
 
 ```bash
 uvicorn main:app --reload
@@ -191,6 +218,9 @@ MCP Services:
 * Academics MCP
 * Cafeteria MCP
 
+Remark:
+The application might take some time to start.
+Wait until the Campus Overview is filled with data.
 ---
 
 ## Future Improvements
@@ -198,9 +228,9 @@ MCP Services:
 * User authentication
 * Database integration
 * Conversation memory
-* Real-time notifications
 * Additional campus services
 * Analytics dashboard
+* Calender for academics data
 
 ---
 
@@ -215,72 +245,3 @@ Built to explore:
 * FastAPI microservices
 * AI-assisted campus information systems
 * Full-stack application deployment
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Prerequisites
-
-Python 3.10+
-FastAPI
-Uvicorn
-
-Run main server
-uvicorn main:app --reload
-
-
-Run All MCP Services
-
-Open 4 separate terminals.
-
-cd mcp/library_api
-uvicorn library_api:app --reload --port 8001
-
-cd mcp/event_api
-uvicorn event_api:app --reload --port 8002
-
-cd mcp/cafeteria_api
-uvicorn cafeteria_api:app --reload --port 8003
-
-cd mcp/academic_api
-uvicorn academic_api:app --reload --port 8004
-
-
-
-
-Library     http://localhost:8001
-Events      http://localhost:8002
-Cafeteria   http://localhost:8003
-Academic    http://localhost:8004
-
-
-run the frontend
-cd frontend
-npm run dev
-
-cd frontend
-npm run build
-
-http://localhost:5173/
-
-
-
-
-uvicorn mcp.event_api.event_api:app --host 0.0.0.0 --port 10000
-pip install -r mcp/event_api/requirements.txt
-
-uvicorn mcp.cafeteria_api.cafeteria_api:app --host 0.0.0.0 --port 10000
-pip install -r mcp/cafeteria_api/requirements.txt
-
-uvicorn mcp.academic_api.academic_api:app --host 0.0.0.0 --port 10000
-pip install -r mcp/academic_api/requirements.txt
