@@ -222,6 +222,7 @@ MCP Services:
 Remark:
 The application might take some time to start.
 Wait until the Campus Overview is filled with data.
+
 ---
 
 ## Future Improvements
